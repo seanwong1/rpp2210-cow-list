@@ -10,7 +10,13 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/api/cows', (req, res) => {
-  res.send('Hello from the server!');
+  db.getCows((err, result) => {
+    if (err) {
+      res.status(404);
+    } else {
+      res.send(result);
+    }
+  });
 })
 
 app.post('/api/cows', (req, res) => {;

@@ -37,8 +37,17 @@ var insertCow = function(cowName, cowDesc, cb) {
   )
 };
 
-var getCows = function() {
-
+var getCows = function(cb) {
+  connection.execute(
+    'select * from cows',
+    (err, result) => {
+      if (err) {
+        cb(err, null);
+      } else {
+        cb(null, result);
+      }
+    }
+  )
 };
 
 // Don't forget to export your functions!
