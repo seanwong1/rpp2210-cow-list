@@ -7,12 +7,20 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cows: []
+      cows: [],
+      displayCow: '',
+      displayCowDesc: ''
     };
+
+    this.getDisplayCow = this.getDisplayCow.bind(this);
   }
 
   componentDidMount() {
     this.getCows()
+  }
+
+  getDisplayCow(name, description) {
+    this.setState({displayCow: name, displayCowDesc: description});
   }
 
   getCows() {
@@ -42,9 +50,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Cows Cows Cows</h1>
+        <h1>{this.state.displayCow}</h1>
+        <h2>{this.state.displayCowDesc}</h2>
         <Add submitCow={this.submitCow} />
-        <CowList cows={this.state.cows} />
+        <CowList cows={this.state.cows} getDisplayCow={this.getDisplayCow} />
         <button onClick={() => {this.getCows}}>Get Cows</button>
       </div>
     )

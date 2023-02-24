@@ -11,7 +11,7 @@ class CowList extends Component {
     var cows = this.props.cows.map((cow) => {
       return (
         <div>
-          <Cow cow={cow} />
+          <Cow cow={cow} getDisplayCow={this.props.getDisplayCow} />
         </div>
       )
     })

@@ -9,8 +9,7 @@ class Cow extends Component {
   render() {
     return(
       <div>
-        <div>{this.props.cow.Name}</div>
-        <div>{this.props.cow.Description}</div>
+        <div onClick={(event) => this.props.getDisplayCow(event.target.innerText, this.props.cow.Description)} >{this.props.cow.Name}</div>
       </div>
     )
   }
