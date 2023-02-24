@@ -1,10 +1,10 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'student',
-  password: 'student',
-  database: 'YOUR_DATABASE_NAME_HERE'
+  user: 'root',
+  password: '',
+  database: 'cowscows'
 });
 
 connection.connect((err) => {
@@ -12,6 +12,13 @@ connection.connect((err) => {
     console.log(err);
   } else {
     console.log('Connected to MySQL!')
+    connection.query(
+      'create table if not exists cows ( \
+        id int not null auto_increment primary key, \
+        Name varchar(16), \
+        Description varchar(64) \
+      )'
+    )
   }
 });
 
@@ -22,6 +29,6 @@ connection.connect((err) => {
 
 
 // Don't forget to export your functions!
-module.exports = {
+module.exports = {connection
 
 };
