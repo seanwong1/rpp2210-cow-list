@@ -51,8 +51,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>{this.state.displayCow}</h1>
-        <h2>{this.state.displayCowDesc}</h2>
+        <h1>Cows Cows Cows</h1>
+        <h2>{this.state.displayCow}</h2>
+        <h3>{this.state.displayCowDesc}</h3>
         <Add submitCow={this.submitCow} />
         <CowList cows={this.state.cows} getDisplayCow={this.getDisplayCow} />
         <button onClick={this.getCows}>Get Cows</button>
