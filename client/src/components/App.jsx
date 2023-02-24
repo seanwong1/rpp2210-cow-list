@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Add from './Add.jsx';
+import CowList from './CowList.jsx';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      cows: []
+    };
   }
 
   componentDidMount() {
@@ -15,7 +18,8 @@ class App extends Component {
   getCows() {
     axios.get('/api/cows')
       .then((response) => {
-        console.log(response.data);
+        var cowsData = response.data
+        this.setState({cows: cowsData});
       })
       .catch((err) => {
         console.log(err);
@@ -40,7 +44,8 @@ class App extends Component {
       <div>
         <h1>Cows Cows Cows</h1>
         <Add submitCow={this.submitCow} />
-        <button onClick={this.getCows}>Get Cows</button>
+        <CowList cows={this.state.cows} />
+        <button onClick={() => {this.getCows}}>Get Cows</button>
       </div>
     )
   }

@@ -6,12 +6,13 @@ class Cow extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
-
+    return(
+      <div>
+        <div>{this.props.cow.Name}</div>
+        <div>{this.props.cow.Description}</div>
+      </div>
+    )
   }
 }
 
