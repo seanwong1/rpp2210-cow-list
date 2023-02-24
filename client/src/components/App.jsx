@@ -13,6 +13,7 @@ class App extends Component {
     };
 
     this.getDisplayCow = this.getDisplayCow.bind(this);
+    this.getCows = this.getCows.bind(this);
   }
 
   componentDidMount() {
@@ -39,9 +40,9 @@ class App extends Component {
       cowName: name,
       cowDesc: description
     })
-      .then((response) => {
-        console.log(response);
-      })
+      .then(
+        this.getCows()
+      )
       .catch((err) => {
         console.log(err);
       });
@@ -54,7 +55,7 @@ class App extends Component {
         <h2>{this.state.displayCowDesc}</h2>
         <Add submitCow={this.submitCow} />
         <CowList cows={this.state.cows} getDisplayCow={this.getDisplayCow} />
-        <button onClick={() => {this.getCows}}>Get Cows</button>
+        <button onClick={this.getCows}>Get Cows</button>
       </div>
     )
   }
