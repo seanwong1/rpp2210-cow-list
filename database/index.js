@@ -16,19 +16,31 @@ connection.connect((err) => {
       'create table if not exists cows ( \
         id int not null auto_increment primary key, \
         Name varchar(16), \
-        Description varchar(64) \
+        Description varchar(255) \
       )'
     )
   }
 });
 
 // Your Database Queries Here!!
+var insertCow = function(cowName, cowDesc, cb) {
+  connection.execute(
+    'insert into cows (Name, Description) values (?, ?)',
+    [cowName, cowDesc],
+    (err, result) => {
+      if (err) {
+        cb(err, null);
+      } else {
+        cb(null, result);
+      }
+    }
+  )
+};
 
+var getCows = function() {
 
-
-
+};
 
 // Don't forget to export your functions!
-module.exports = {connection
-
+module.exports = {connection, insertCow, getCows
 };
