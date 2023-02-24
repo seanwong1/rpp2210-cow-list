@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Add from './Add.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -21,10 +22,24 @@ class App extends Component {
       })
   }
 
+  submitCow(name, description) {
+    axios.post('/api/cows', {
+      cowName: name,
+      cowDesc: description
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   render() {
     return (
       <div>
-        hello guys
+        <h1>Cows Cows Cows</h1>
+        <Add submitCow={this.submitCow} />
       </div>
     )
   }

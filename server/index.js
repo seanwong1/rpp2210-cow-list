@@ -13,7 +13,7 @@ app.get('/api/cows', (req, res) => {
   res.send('Hello from the server!');
 })
 
-app.post('/api/cows', (req, res) => {
+app.post('/api/cows', (req, res) => {;
   db.insertCow(req.body.cowName, req.body.cowDesc, (err, result) => {
     if (err) {
       res.status(404);
